@@ -45,10 +45,18 @@ public class UserService {
 		
 	}
 	
+	
+	public void delete(String id) {
+				
+		repo.deleteById(id);
+			
+	}
 
 	public User FromDTO(UserDTO objDto) {
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
 		
 	}
 
+	
+	
 }
