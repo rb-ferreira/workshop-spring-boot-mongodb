@@ -3,7 +3,6 @@ package com.course.workshopmongo.resources;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.course.workshopmongo.domain.Post;
 import com.course.workshopmongo.domain.User;
 import com.course.workshopmongo.dto.UserDTO;
 import com.course.workshopmongo.services.UserService;
@@ -85,6 +85,16 @@ public class UseResource {
 		return ResponseEntity.noContent().build();
 		
 	}
+	
+	@GetMapping(value="{id}/post")
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+		
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(obj.getPosts());
+		
+	}
+	
+	
 	
 	
 	
